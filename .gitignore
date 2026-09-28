@@ -44,4 +44,4 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 !data/processed/modeling
-
+notebooks/catboost_info/
