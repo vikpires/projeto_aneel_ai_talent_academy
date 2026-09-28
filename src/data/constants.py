@@ -95,3 +95,26 @@ QUERY_INTERRUPTIONS_INTERIM_VALIDATE = """
         COUNT(*) FILTER (WHERE NumConsumidorConjunto < 0)
     FROM read_parquet(?)
     """
+
+# Colunas obrigatórias para validação do resultado da inferência.
+
+# Chave da tabela fato no star schema.
+FACT_KEY_COLUMNS = [
+    "ConjuntoKey",
+    "IndicadorKey",
+    "Data",
+]
+
+# Colunas mantidas para relacionamento e filtros no Power BI.
+CONTEXT_COLUMNS = [
+    "ConjuntoKey",
+    "IndicadorKey",
+    "Data",
+    "Ano",
+    "MesNumero",
+    "SigIndicador",
+    "SigAgente",
+    "Regiao",
+    "faixa_consumidores",
+    "alvo_real",
+]
