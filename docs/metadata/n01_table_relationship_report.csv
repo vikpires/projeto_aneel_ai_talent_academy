@@ -1,0 +1,4 @@
+regra,falhas
+continuidade_sem_regiao,4
+interrupcoes_sem_regiao,4
+continuidade_sem_limite,64

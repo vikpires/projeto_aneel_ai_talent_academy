@@ -8,3 +8,4 @@ processed,dim_motivo_interrupcao.parquet,parquet,9,4,0.00115203857421875
 processed,dim_tipo_interrupcao.parquet,parquet,2,2,0.0004062652587890625
 processed,fato_causa_mensal.parquet,parquet,3002279,16,87.62132453918457
 processed,fato_continuidade.parquet,parquet,375082,10,5.316835403442383
+processed,predicoes_risco.parquet,parquet,367282,16,3.2444562911987305

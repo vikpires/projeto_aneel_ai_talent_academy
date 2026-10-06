@@ -1,0 +1,7 @@
+SigIndicador,faixa_historico,observacoes,transgressoes_seguinte,risco_periodo_seguinte
+DEC,0 transgressões,182315,47.0,0.03
+DEC,1-2 transgressões,1333,18.0,1.35
+DEC,3-5 transgressões,119,10.0,8.4
+DEC,6 ou mais transgressões,14,3.0,21.43
+FEC,0 transgressões,183498,9.0,0.0
+FEC,1-2 transgressões,155,3.0,1.94

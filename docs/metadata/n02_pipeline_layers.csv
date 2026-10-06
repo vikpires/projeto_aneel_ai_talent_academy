@@ -1,0 +1,4 @@
+pasta,camada,finalidade,formato(s),processamento,destino
+raw,Bronze,Preservar os dados recebidos das fontes oficiais do portal da ANEEL,Parquet e CSV,extractor.py,Quality Gate Raw
+interim,Silver,"Filtrar, padronizar e preparar os dados para a modelagem",Parquet,transformer.py + filter_*.sql,Quality Gate Interim
+processed,Gold,Disponibilizar o modelo dimensional para consumo analítico,Parquet,fato_dim.py + SQL dimensional,"Power BI, EDA e Machine Learning"

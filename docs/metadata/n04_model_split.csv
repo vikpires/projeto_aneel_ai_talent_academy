@@ -1,0 +1,4 @@
+particao,periodo,observacoes,percentual_base,transgressoes
+treino,2021-2023,223184,60.77,70
+validacao,2024,75072,20.44,14
+teste,2025,69026,18.79,6

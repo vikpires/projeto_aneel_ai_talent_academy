@@ -1,0 +1,6 @@
+modelo,classe,tratamento_desbalanceamento
+logistic_regression,LogisticRegression,class_weight='balanced'
+extra_trees,ExtraTreesClassifier,class_weight='balanced_subsample'
+lightgbm,LGBMClassifier,scale_pos_weight=3187.3429
+xgboost,XGBClassifier,scale_pos_weight=3187.3429
+catboost,CatBoostClassifier,scale_pos_weight=3187.3429

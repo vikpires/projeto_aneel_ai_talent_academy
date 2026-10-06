@@ -1,0 +1,2 @@
+modelo,precision,recall,f1_score,roc_auc,pr_auc
+baseline_classe_majoritaria,0.0,0.0,0.0,0.5,0.00018648763853367433

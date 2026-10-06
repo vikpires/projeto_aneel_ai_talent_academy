@@ -1,0 +1,5 @@
+regra,ocorrencias,total_referencia,percentual_afetado,justificativa
+continuidade_sem_regiao,4,3824,0.1,A ausência regional é tratada como 'NÃO INFORMADO' no modeloe afeta apenas o enriquecimento geográfico.
+interrupcoes_sem_regiao,4,3766,0.11,A ausência regional é tratada como 'NÃO INFORMADO' no modeloe afeta apenas o enriquecimento geográfico.
+continuidade_sem_limite,64,31292,0.2,A combinação sem limite não pode ser usadaem comparação regulatória.
+regiao_uf_vazia,29,15162,0.19,A UF vazia reduz o detalhamento geográfico;o modelo usa 'NÃO INFORMADO' quando necessário.

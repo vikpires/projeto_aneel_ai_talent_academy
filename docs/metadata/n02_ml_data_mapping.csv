@@ -1,0 +1,10 @@
+origem,categoria,colunas_exemplos,uso_potencial
+fato_continuidade,Possíveis alvos,"VlrIndicador, UltrapassouLimite, PercentualDoLimite",Prever ultrapassagem ou risco regulatório
+fato_continuidade,Features,"VlrLimite, ExcessoSobreLimite",Caracterizar a relação entre apuração e limite
+fato_causa_mensal,Features,"QtdInterrupcoes, DuracaoTotalHoras, DuracaoMediaHoras, MaiorInterrupcaoHoras",Representar frequência e duração das interrupções
+fato_causa_mensal,Features,"NivelTensao, UnidadesAfetadasSoma, ConsumidorHoras",Representar impacto operacional
+fato_causa_mensal,Features,"ContribDEC_Estimada, ContribFEC_Estimada",Representar contribuições estimadas aos indicadores
+dim_data,Features temporais,"Ano, MesNumero, Trimestre",Representar sazonalidade e evolução temporal
+dim_distribuidora,Features de contexto,"SigAgente, NumCNPJ",Identificar a distribuidora
+dim_conjunto,Features geográficas e cadastrais,"CodMunicipio, Municipio, UF, Regiao",Representar localização e contexto do conjunto
+dim_indicador e dimensões de interrupção,Features categóricas,"SigIndicador, TipoInterrupcao, MotivoDescricao, Origem, GrupoCausa",Representar categorias operacionais e regulatórias

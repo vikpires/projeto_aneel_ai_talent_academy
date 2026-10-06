@@ -1,0 +1,10 @@
+tabela,tipo,linhas,colunas,finalidade
+fato_continuidade,Fato,375082,10,"Indicadores DEC/FEC, limites e transgressões"
+fato_causa_mensal,Fato,3002279,16,Interrupções agregadas e contribuições estimadas
+dim_data,Dimensão,1826,7,Calendário e atributos temporais
+dim_distribuidora,Dimensão,105,3,Distribuidoras e identificadores
+dim_conjunto,Dimensão,3824,9,"Conjuntos, localização e cadastro"
+dim_indicador,Dimensão,2,4,Indicadores DEC e FEC
+dim_tipo_interrupcao,Dimensão,2,2,Tipos de interrupção
+dim_motivo_interrupcao,Dimensão,9,4,Motivos regulatórios
+dim_causa_interrupcao,Dimensão,518,5,Causas normalizadas
