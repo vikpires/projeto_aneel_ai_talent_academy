@@ -3,7 +3,7 @@
 
 * **Documento:** Escopo do Projeto e Compreensão do Negócio (CRISP-DM Fase 1)
 
-* **Equipe Responsável:** Equipe 14 - Antônio Marcel, Edivaldo Dias, Leonardo Gomes, Vanessa Vilela, Vitor Pires
+* **Equipe Responsável:** Equipe 14 - Antônio Marcel, Edivaldo Dias, Vanessa Vilela, Vitor Pires
 
 * **Período de Execução:** 01/09/2026 a 30/09/2026 
 
@@ -11,7 +11,7 @@
 
 * **Links:** [Repositório GitHub](https://github.com/vikpires/projeto_aneel_equipe14) • [Quadro Kanban](https://github.com/users/vikpires/projects/7/views/1)
 
-* **Versão:** 2.0
+* **Versão:** 3.0
 
 ---
 
@@ -51,32 +51,30 @@
 Este documento consolida a **Fase 1 do CRISP-DM - Compreensão do Negócio (Business Understanding)**. Sua finalidade é formalizar o alinhamento estratégico, mapear as dores do setor elétrico e fixar critérios técnicos mensuráveis antes da manipulação dos dados brutos no pipeline de dados.
 
 ### 1.2. Contextualização
-No Brasil, as distribuidoras de enérgia elétrica operam sob regime de concessão pública regulada pela AN
-
 A distribuição de energia elétrica no Brasil opera sob regime de concessão pública regulada pela Agência Nacional de Energia Elétrica (ANEEL). A qualidade e a continuidade do fornecimento são mensuradas por dois indicadores operacionais fundamentais:
 
 * **DEC (Duração Equivalente de Interrupção por Unidade Consumidora):** Mede o tempo médio acumulado, em horas, que um grupo de consumidores fica sem fornecimento de energia.
 
 * **FEC (Frequência Equivalente de Interrupção por Unidade Consumidora):** Mede a quantidade média de eventos de interrupção no fornecimento de energia ao mesmo grupo de consumidores no período apurado.
 
-**Dinâmica Regulatória e Penalidades:**
-
-Anualmente, a ANEEL estebelece limites máximos toleráveis para vada conjunto de unidades consumidoras. Ultrpassar esses limites caracteriza descumprimento das cláusulas do contrato de concessão (PRODIST - Módulo 8), acarretando em:
+Anualmente, a ANEEL estebelece limites máximos toleráveis para vada conjunto de unidades consumidoras. Ultrapassar esses limites caracteriza descumprimento das cláusulas do contrato de concessão (PRODIST - Módulo 8), acarretando em:
 
 1. Compensação financeira automática na fatura dos consumidores afetados;
 
 2. Sujeição a processos punitivos, multas administrativas e elevação do risco reputacional da concessionária.
 
 ### 1.3. Problemas e Oportunidades
-A gestão de continuidade do serviço nas concessionárias opera frequentemente de forma **reativa**, sendo caracterizado por:
+A gestão de continuidade do serviço nas concessionárias opera frequentemente de forma **reativa**, sendo caracterizada por:
 
-1. Defasagem temporal de diagnóstico: A identificação de violações ocorre após o encerramento do ciclo regulatório, inviabilizando intervenções preventivas.
-2. Passivos financeiros e punições: A ausência de alertas antecipados gera desembolsos imediatos em compensações aos consumidores afetados.
-3. Fricção analítica em escala: As bases brutas possuem dezenas de milhões de ocorrências descentralizadas e não padronizadas limitando a visão operacional e as estratégias de negócio.
+1. Atuação reativa e não preventiva, com a identificação de falhas apenas no fim do ciclo regulatório.
+
+2. Custos financeiros imediatos com compensações a consumidores e desgaste na reputação da concessionária.
+
+3. Volume massivo de ocorrências descentralizadas e sem padronização limitando a visão operacional e as estratégias de negócio.
 
 ### 1.4. Objetivo
 #### 1.4.1. Objetivo Geral
-Construir uma solução integrada de Engenharia de Dados, Análise de Dados e Machine Learning para diagnosticar o comportamento histórico dos indicadores DEC e FEC, mapear a reincidência de transgressões e estimar a probabilidade mensal de estouro dos limites regulatórios futuros por conjunto elétrico.
+Desenvolver uma solução integrada de Dados e Machine Learning para analisar o histórico do DEC e FEC e antecipar o risco de transgressão regulatória no período seguinte.
 
 #### 1.4.2. Objetivos Específicos
 * Integrar e padronizar a série histórica (2021–2025) dos datasets regulatórios da ANEEL (Continuidade, Limites, Interrupções, Atributos e Regiões).
@@ -87,7 +85,7 @@ Construir uma solução integrada de Engenharia de Dados, Análise de Dados e Ma
 
 * Treinar e validar um modelo de Machine Learning supervisionado para classificar o score de risco de transgressão (Apurado > Limite) no horizonte mensal subsequente (t + 1).
 
-* Entregar a camada de dados modelada em *Star Schema* colunar via Parquet, consumida diretamente por painéis executivos e operacionais no Power BI.
+* Entregar a camada de dados modelada em *Star Schema* colunar via Parquet, consumida diretamente por dashboards no Power BI.
 
 ### 1.5. Stakeholders e Usuários Finais
 
@@ -120,7 +118,7 @@ Construir uma solução integrada de Engenharia de Dados, Análise de Dados e Ma
 | :--- | :--- | :--- | 
 | **Granularidade e Privacidade** | Dados regulatórios consolidados em nível de conjunto consumidor, distribuidora, município e UF | Não serão manipulados dados individualizados por consumidor, garantindo conformidade com a LGPD | 
 | **Execução** | Pipeline ELT em lote, com processamento histórico mensal e inferência periódica | Rotinas de streaming em tempo real |
-| **Fontes Externas** | Datasets oficiais de distribuição e qualidade comercial da ANEEL | Não serão integrados arquivos geoespaciais ou API de dados meteorológicos em tempo real |
+| **Fontes Externas** | Datasets oficiais de distribuição e qualidade comercial da ANEEL | Não serão integrados arquivos geoespaciais ou API de dados meteorológicos em tempo real devido a complexidade e tempo necessário |
 
 ### 2.2. Hipóteses de Negócio
 
@@ -165,7 +163,7 @@ Construir uma solução integrada de Engenharia de Dados, Análise de Dados e Ma
 
 * **Armazenamento e Distribuição:** Hospedagem analítica via GitHub Releases, viabilizando consumo dos arquivos processados direto no Power BI.
 
-* **Esforço Técnico:** Dedicação de 6 membros ao longo do ciclo do projeto, distribuídos entre as áreas de engenharia de dados, modelagem preditiva, construção do dashboard e documentação.
+* **Esforço Técnico:** Dedicação dos membros da equipe ao longo do ciclo do projeto, distribuídos entre as áreas de engenharia de dados, modelagem preditiva, construção do dashboard e documentação.
 
 * **Manutenção Futura:** Esforço periódico estimado em poucas horas mensais para extração de novos períodos apurados e retreino do modelo.
 
@@ -197,7 +195,7 @@ Os dados são 100% operacionais e anonimizados na fonte pela ANEEL, sem exposiç
 | **Requisitos Funcionais (RF)** |
 |:---|
 | **RF01:** O pipeline deve extrair, validar e integrar os dados de continuidade e limites de 2021 a 2025 de forma automatizada. | 
-| **RF02:** O sistema deve calcular o indicador de transgressão (Apurado > Limite) e a margem de desvio relativo percentual por conjunto/mês |
+| **RF02:** O sistema deve calcular o indicador de transgressão (Apurado > Limite) |
 | **RF03:** A camada de dados deve validar schemas e tratar dados ausentes e inconsistentes antes do processamento nas camadas analíticas.|
 | **RF04:** Disponibilizar a base processada em modelagem Star Schema contendo tabelas fato e dimensão documentadas. |
 | **RF05:** O modelo de Machine Learning deve gerar uma coluna contendo o *Score de Risco* (probabilidade entre 0 e 1) de descumprimento para o período `t+1`.|
@@ -205,7 +203,7 @@ Os dados são 100% operacionais e anonimizados na fonte pela ANEEL, sem exposiç
 | **Requisitos Não Funcionais (RNF)**
 |:---|
 | **RNF01:** Pipeline de dados e modelagem versionados no Git e ambiente virtual configurado. |
-| **RNF02:** Processamento de arquivos pesados via DuckDB deve operar em modo out-of-core, limitando o consumo de RAM a 4 GB.| 
+| **RNF02:** Processamento de arquivos pesados via DuckDB deve operar em modo out-of-core, limitando o consumo de RAM a 4 GB para evitar estouro de memória RAM.| 
 | **RNF03:** Os artefatos processados em Parquet devem ser distribuídos via GitHub Releases, permitindo que o Power BI consuma as tabelas diretamente pela Web sem dependência de bancos locais.|
 
 ---
@@ -225,17 +223,17 @@ Os dados são 100% operacionais e anonimizados na fonte pela ANEEL, sem exposiç
 
 O projeto segue as seis fases do framework **CRISP-DM**, com entregas iterativas e gerenciadas via quadro Kanban:
 
-1. **Compreensão do Negócio (Business Understanding):** Mapeamento das regras regulatórias (PRODIST/ANEEL), impacto operacional das violações de DEC/FEC, definição de KPIs de negócio, métricas técnicas e escopo do projeto.
+1. **Compreensão do Negócio (Business Understanding):** Escopo, metas regulatórias, estrutura do repositório e ambiente de desenvolvimento.
 
 2. **Compreensão dos Dados (Data Understanding):** Ingestão das bases anuais, auditoria de integridade e Análise Exploratória de Dados (EDA) para identificação de padrões sazonais e outliers.
 
-3. **Preparação dos Dados (Data Preparation):** Limpeza, padronização e estruturação do modelo dimensional.
+3. **Preparação dos Dados (Data Preparation):** Limpeza, padronização, engenharia de features temporais e divisão dos dados de treino, validação e teste.
 
-4. **Modelagem (Modeling):** Desenvolvimento de modelagem preditiva com a seleção de algoritmos de classificação, validação cruzada temporal e engenharia de features temporais.
+4. **Modelagem (Modeling):** Desenvolvimento de modelagem preditiva com a seleção de algoritmos de classificação e validação cruzada temporal .
 
-5. **Avaliação (Evaluation):** Auditoria das regras de agregação e validação de desempenho dos modelos.
+5. **Avaliação (Evaluation):** Validação final do modelo vencedor.
 
-6. **Implantação (Deployment):** Publicação dos Parquets processados com predições, conexão com o modelo dimensional no Power BI, consolidação da documentação técnica no repositório, e apresentação final.
+6. **Implantação (Deployment):** Publicação de arquivo Parquet processados com predições, conexão com o modelo dimensional no Power BI, consolidação da documentação técnica no repositório, e apresentação final.
 
 ### 4.3. Métricas de Avaliação e Benchmarks de Sucesso
 
@@ -254,22 +252,20 @@ O projeto segue as seis fases do framework **CRISP-DM**, com entregas iterativas
    * **Performance e Navegação:** Painel em Power BI estruturado em *Star Schema* com filtros dinâmicos e tempo de resposta inferior a **5 segundos** por visual.
 
 3. **Desempenho do Modelo Preditivo (Machine Learning):**
-   * **Recall (Sensibilidade) $\ge 75\%$:** Capacidade de antecipar a maioria das transgressões reais antes do fechamento do mês, minimizando multas surpresa.
+   * **Recall (Sensibilidade) $\ge 60\%$:** Capacidade de antecipar a maioria das transgressões reais antes do fechamento do mês, minimizando multas surpresa.
 
-   * **Precisão $\ge 60\%$:** Garantir que pelo menos 3 a cada 5 alertas emitidos pelo modelo correspondam a problemas reais, evitando deslocamento inútil de equipes.
+   * **Precisão $\ge 60\%$:** Garantir que pelo menos 3 a cada 5 alertas emitidos pelo modelo correspondam a problemas reais.
 
-   * **F1-Score ($\ge 0,65$ a $0,70$):** Balanço harmônico entre capturar o risco regulatório e não saturar a operação com alarmes falsos.
+   * **F1-Score ($\ge 0,65$ a $0,70$):** Balanço harmônico entre capturar o risco regulatório e não saturar a operação com falso positivos.
 
    * **PR-AUC e ROC-AUC ($\ge 0,80$):** Capacidade geral do modelo de ordenar e separar corretamente os conjuntos de alto risco dos conjuntos estáveis.
 
    * **Matriz de Confusão Calibrada:** Ajuste do limiar de decisão (*threshold*) priorizando a redução expressiva de falsos negativos (transgressões não previstas).
 
 4. **Impacto e Acionabilidade de Negócio**
-    * **Foco no Top Risco (Lift Operacional):** O modelo deve concentrar pelo menos 60% das transgressões reais do mês seguinte dentro dos 20% dos conjuntos sinalizados com maior probabilidade de violação.
+   * **Foco no Top Risco (Lift Operacional):** O modelo deve concentrar pelo menos 60% das transgressões reais do mês seguinte dentro dos 20% dos conjuntos sinalizados com maior probabilidade de violação.
 
-    * **Priorização Acionável:** Geração de um ranking mensal dos conjuntos elétricos com maior urgência de vistoria preventiva.
-
-    * **Simulação de Horas de Interrupção Evitadas:** estimativa do volume de horas acumuladas de corte (DEC excedente) potencialmente mitigadas pela atuação preventiva tempestiva nos conjuntos sinalizados.
+   * **Priorização Acionável:** Geração de um ranking mensal dos conjuntos elétricos com maior urgência de vistoria preventiva.
 
 ---
 
@@ -280,12 +276,11 @@ O projeto segue as seis fases do framework **CRISP-DM**, com entregas iterativas
 
 2. **Dados processados:** pipeline de ingestão e transformação, validações de qualidade, dados intermediários e modelo dimensional em Parquet.
 
-3. **Análises Exploratória de Dados:** notebook de análise exploratória dos dados para identificar padrões, tendências, sazonalidades e possíveis relações relevantes para o projeto.
+3. **Análises Exploratória de Dados:** notebook de análise exploratória dos dados para identificar padrões, tendências, sazonalidades e relações relevantes para o projeto.
 
 4. **Painel Power BI:** arquivo `.pbix` conectado às tabelas processadas, com indicadores de continuidade, criticidade, transgressões e apoio à operação.
 
 5. **Modelo de Machine Learning:** modelo treinado para estimar o risco de transgressão no período seguinte, acompanhado de métricas de avaliação e resultados das previsões.
-
 
 ### 5.2. Síntese Executiva 
 
