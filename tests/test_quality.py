@@ -3,7 +3,12 @@ import pytest
 from src.data import quality_interim
 from src.data.quality_raw import validate_raw_tables
 from src.data.quality_processed import validate_processed_tables
-from src.data.quality_interim import validate_interim_tables, CONT_PATH, INT_PATH, REG_PATH
+from src.data.quality_interim import (
+    validate_interim_tables,
+    CONT_PATH,
+    INT_PATH,
+    REG_PATH,
+)
 
 
 def test_validate_processed_tables_accepts_valid_output(processed_tables_output):
@@ -22,7 +27,9 @@ def test_validate_processed_tables_rejects_missing_table(processed_tables_output
 def test_validate_interim_tables_accepts_transformed_inputs(
     star_schema_inputs, monkeypatch
 ):
-    monkeypatch.setattr(quality_interim, "CONT_PATH", star_schema_inputs["continuity_path"])
+    monkeypatch.setattr(
+        quality_interim, "CONT_PATH", star_schema_inputs["continuity_path"]
+    )
     monkeypatch.setattr(
         quality_interim, "INT_PATH", star_schema_inputs["interruptions_path"]
     )

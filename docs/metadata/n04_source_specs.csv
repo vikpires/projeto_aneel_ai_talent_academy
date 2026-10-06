@@ -1,0 +1,8 @@
+fonte,linhas,colunas,finalidade
+fato_continuidade,375082,10,"Fato principal: DEC/FEC, limites e transgressões"
+fato_causa_mensal,3002279,16,"Fato operacional: interrupções, duração e impacto"
+dim_data,1826,7,Dimensão temporal
+dim_conjunto,3824,9,Dimensão cadastral e regional
+dim_distribuidora,105,3,Dimensão da distribuidora
+dim_indicador,2,4,Dimensão dos indicadores DEC/FEC
+atributos,7569,9,Atributos de modelagem

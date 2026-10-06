@@ -1,0 +1,11 @@
+regra,total,falhas,percentual_falhas
+continuidade_ide_conjunto,375082,0,0.0
+continuidade_valor,375082,0,0.0
+interrupcoes_ide_conjunto,44410820,0,0.0
+interrupcoes_inicio,44410820,0,0.0
+interrupcoes_fim,44410820,0,0.0
+interrupcoes_duracao,44410820,0,0.0
+limites_ide_conjunto,31844,0,0.0
+limites_valor,31844,0,0.0
+atributos_ide_conjunto,7569,0,0.0
+regiao_ide_conjunto,15162,0,0.0

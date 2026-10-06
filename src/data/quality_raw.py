@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 import duckdb
 
-from src.config import DATASETS, RAW_DIR, CONT_PATH
+from src.config import DATASETS, RAW_DIR
 from src.utils.manifesto import validate_manifest
 
 logger = logging.getLogger(__name__)

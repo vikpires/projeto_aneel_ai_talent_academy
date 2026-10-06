@@ -1,0 +1,6 @@
+dataset,categoria,regra,granularidade
+continuidade,schema/domínio,"DEC/FEC, ano no período, mês 1-12, valor >= 0",IdeConjunto + AnoIndice + NumPeriodoIndice + SigIndicador
+interrupcoes,schema/domínio,"datas válidas, duração >= 0, consumidores >= 0",uma linha por evento
+limites,schema/domínio,"DEC/FEC, ano no período, limite numérico",NumCNPJ + IdeConjunto + SigIndicador + AnoIndice
+atributos,schema/domínio,IdeConjunto não nulo,NumCNPJ + IdeConjunto
+regiao,schema/domínio,IdeConjunto não nulo e região compatível com UF,uma linha por IdeConjunto

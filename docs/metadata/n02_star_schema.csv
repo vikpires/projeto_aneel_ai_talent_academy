@@ -1,0 +1,10 @@
+tabela,tipo,finalidade
+dim_data,Dimensão,Calendário diário do período analisado
+dim_distribuidora,Dimensão,Distribuidoras e seus identificadores
+dim_conjunto,Dimensão,Conjuntos elétricos e localização
+dim_indicador,Dimensão,Indicadores DEC e FEC
+dim_tipo_interrupcao,Dimensão,Tipos operacionais de interrupção
+dim_motivo_interrupcao,Dimensão,Motivos regulatórios de interrupção
+dim_causa_interrupcao,Dimensão,Causas normalizadas de interrupção
+fato_continuidade,Fato,Valores apurados e limites de DEC/FEC
+fato_causa_mensal,Fato,Interrupções agregadas e contribuições estimadas

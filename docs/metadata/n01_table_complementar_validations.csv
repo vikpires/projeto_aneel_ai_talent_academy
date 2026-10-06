@@ -1,0 +1,7 @@
+regra,falhas
+continuidade_valor_negativo,0
+interrupcoes_duracao_negativa,0
+interrupcoes_datas_invertidas,0
+interrupcoes_consumidores_negativos,0
+regiao_uf_vazia,29
+regiao_regiao_invalida,0

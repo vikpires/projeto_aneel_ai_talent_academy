@@ -1,10 +1,10 @@
 import json
-
 import duckdb
 
 import src.data.fato_dim as fato_dim
 
 
+# Testes para a função run_fato_dim do módulo fato_dim, que constrói o esquema estrela a partir de arquivos intermediários.
 def test_run_fato_dim_builds_star_schema_from_interim_files(
     star_schema_inputs, monkeypatch
 ):
@@ -64,6 +64,7 @@ def test_run_fato_dim_builds_star_schema_from_interim_files(
     )
 
 
+# Testa se a função run_fato_dim lança um erro quando os arquivos de entrada intermediários estão ausentes.
 def test_run_fato_dim_rejects_missing_inputs(tmp_path):
     import pytest
 
