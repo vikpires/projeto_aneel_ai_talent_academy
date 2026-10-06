@@ -10,6 +10,7 @@ from tests.constants import (
 )
 
 
+# Testa se a função transform_data cria corretamente os arquivos Parquet esperados a partir dos dados de entrada.
 def test_execute_continuidade_transformation_creates_expected_parquet(
     tmp_path, db_connection
 ):
@@ -31,6 +32,7 @@ def test_execute_continuidade_transformation_creates_expected_parquet(
     assert result == [(2021, 1, "X", "12345678000199", 10, "CONJUNTO", "DEC", 1.5)]
 
 
+# Testa se a função transform_data cria corretamente os arquivos Parquet esperados a partir dos dados de entrada de interrupções.
 def test_execute_interrupcoes_transformation_creates_expected_parquet(
     tmp_path, db_connection
 ):
@@ -71,6 +73,7 @@ def test_execute_interrupcoes_transformation_creates_expected_parquet(
     ]
 
 
+# Testa se a função transform_data retorna o mesmo arquivo Parquet existente quando não há necessidade de reconstrução (force=False).
 def test_transform_data_skips_valid_interim_cache(tmp_path, db_connection):
     raw_path = tmp_path / "raw.parquet"
     output_path = tmp_path / "output.parquet"
@@ -89,6 +92,7 @@ def test_transform_data_skips_valid_interim_cache(tmp_path, db_connection):
     assert output_path.read_bytes() == b"existing parquet"
 
 
+# Testa se a função transform_data força a reconstrução do arquivo Parquet mesmo quando um cache válido já existe (force=True).
 def test_transform_data_force_rebuilds_interim_cache(tmp_path, db_connection):
     raw_path = tmp_path / "raw.parquet"
     output_path = tmp_path / "output.parquet"

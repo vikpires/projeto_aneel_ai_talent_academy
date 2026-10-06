@@ -5,6 +5,7 @@ from tests.constants import QUERY_TEST_CONTINUIDADE, QUERY_TEST_INTERRUPCOES
 from src.data.constants import ANO_FIM, ANO_INICIO, MAX_NULL_PERCENTAGE
 
 
+# Função auxiliar para resolver caminhos relativos para absolutos, garantindo que os arquivos de teste sejam encontrados corretamente.
 def _resolved_path(path):
     path = Path(path)
     if not path.is_absolute():
